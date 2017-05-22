@@ -24,10 +24,6 @@ idea {
 }
 
 repositories {
-    //flatDir {
-    //    dirs 'qlue/build/libs/'
-    //}
-
     mavenCentral()
 }
 
