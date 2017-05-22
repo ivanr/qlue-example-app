@@ -1,0 +1,5 @@
+This repo serves two purposes: 1) it serves as a sandbox in which I develop
+Qlue and experiment with new features and 2) shows how to structure and
+implement a web application that relies on Qlue. Actually, for this latter
+purpose I go beyond Qlue and present here some ideas about database operations,
+scheduling, some application code, etc.
