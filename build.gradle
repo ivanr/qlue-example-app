@@ -1,0 +1,84 @@
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+idea {
+    project {
+        // There seems to be a bug in Gradle and/or the IDEA plugin and
+        // automatically configuring the language level doesn't appear to be working.
+        //     https://issues.gradle.org/browse/GRADLE-2198
+        //
+        // For now, after importing this project, manually set target Java
+        // version to 1.8 in Project Structure > Project Settings > Project.
+        languageLevel = '1.8'
+    }
+
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'qlue/target'
+    }
+
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'org.projectlombok:lombok:1.16.6'
+    compile 'de.svenkubiak:jBCrypt:0.4'
+
+    compile name: 'qlue-3.x.x-trunk'
+    runtime 'commons-cli:commons-cli:1.4'
+    runtime 'org.apache.commons:commons-email:1.4'
+    runtime 'javax.mail:mail:1.4.7'
+    runtime group: 'it.sauronsoftware.cron4j', name: 'cron4j', version: '2.2.5'
+
+    runtime 'org.postgresql:postgresql:9.4.1209.jre7'
+    compile 'org.flywaydb:flyway-core:4.0.3'
+    compile 'org.mybatis:mybatis:3.4.4'
+
+    compile 'org.apache.velocity:velocity:1.7'
+
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+    runtime 'org.apache.tomcat.embed:tomcat-embed-core:8.5.15'
+    runtime 'org.apache.tomcat:tomcat-jasper:8.5.15'
+    runtime 'org.apache.tomcat:tomcat-jasper-el:8.5.15'
+    runtime 'org.apache.tomcat:tomcat-jsp-api:8.5.15'
+
+    compile 'io.dropwizard.metrics:metrics-core:3.2.2'
+    compile 'io.dropwizard.metrics:metrics-servlet:3.2.2'
+    compile 'io.dropwizard.metrics:metrics-servlets:3.2.2'
+    runtime 'io.dropwizard.metrics:metrics-logback:3.2.2'
+}
+
+sourceSets {
+    main {
+        resources.srcDirs = ["src/main/java"]
+    }
+
+    test {
+        resources.srcDirs = ["src/test/java"]
+    }
+}
+
+war {
+    // Do not include any Tomcat JARs in the WAR file. We need Tomcat
+    // files in the project so that we can use embedded Tomcat during
+    // development, but leaving them in the WAR can cause conflicts.
+    rootSpec.exclude("**/tomcat-*.jar")
+    rootSpec.exclude("**/javax.servlet*.jar")
+}
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+}
