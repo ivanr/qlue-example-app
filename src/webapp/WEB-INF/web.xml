@@ -24,4 +24,8 @@
         </cookie-config>
     </session-config>
 
+    <error-page>
+        <location>/_qlue/handleError</location>
+    </error-page>
+
 </web-app>
