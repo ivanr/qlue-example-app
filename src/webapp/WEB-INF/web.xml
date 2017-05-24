@@ -1,5 +1,7 @@
 <web-app version="3.1" metadata-complete="true">
 
+    <!-- Application -->
+
     <servlet>
         <servlet-name>QlueServlet</servlet-name>
         <servlet-class>com.webkreator.qlue.QlueServlet</servlet-class>
@@ -24,8 +26,22 @@
         </cookie-config>
     </session-config>
 
+    <!-- Error page handling
+    <servlet>
+        <servlet-name>QlueErrorPageServlet</servlet-name>
+        <servlet-class>com.webkreator.qlue.util.QlueErrorPageServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>QlueErrorPageServlet</servlet-name>
+        <url-pattern>/_qlue_error_page/*</url-pattern>
+    </servlet-mapping>
+
     <error-page>
-        <location>/_qlue/handleError</location>
+        <error-code>404</error-code>
+        <location>/_qlue_error_page/handleError</location>
     </error-page>
+    -->
 
 </web-app>
