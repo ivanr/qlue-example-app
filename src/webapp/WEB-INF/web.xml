@@ -26,7 +26,8 @@
         </cookie-config>
     </session-config>
 
-    <!-- Error page handling
+    <!-- Error page handling -->
+    <!--
     <servlet>
         <servlet-name>QlueErrorPageServlet</servlet-name>
         <servlet-class>com.webkreator.qlue.util.QlueErrorPageServlet</servlet-class>
@@ -43,5 +44,9 @@
         <location>/_qlue_error_page/handleError</location>
     </error-page>
     -->
+
+    <error-page>
+        <location>/_qlue/handleError</location>
+    </error-page>
 
 </web-app>
