@@ -43,10 +43,10 @@
         <error-code>404</error-code>
         <location>/_qlue_error_page/handleError</location>
     </error-page>
-    -->
 
     <error-page>
         <location>/_qlue/handleError</location>
     </error-page>
+    -->
 
 </web-app>
