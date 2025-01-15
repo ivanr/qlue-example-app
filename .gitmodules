@@ -1,4 +1,4 @@
 [submodule "qlue"]
 	path = qlue
 	url = git@github.com:ivanr/qlue.git
-    branch = master
+	branch = servlet_6_1

@@ -4,7 +4,7 @@ import com.webkreator.qlue.Page;
 import com.webkreator.qlue.view.DefaultView;
 import com.webkreator.qlue.view.View;
 
-public class helloWorld extends Page {
+public class index extends Page {
 
     @Override
     public View onGet() {
